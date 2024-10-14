@@ -248,7 +248,7 @@ Gỡ cài đặt SW và thử lại, Kết quả console log hiển thị như s
 
 ![image](https://github.com/user-attachments/assets/bd9a66fe-0980-4402-8132-e7c2070e7c33)
 
-**5.5. Sau khi kết thúc màn khởi động =)) Dưới đây là ví dụ cụ thể 1 file service worker chi tiết
+**5.5. Sau khi kết thúc màn khởi động =)) Dưới đây là ví dụ cụ thể 1 file service worker chi tiết**
 
 ```js
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js');
