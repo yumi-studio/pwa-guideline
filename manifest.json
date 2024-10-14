@@ -1,0 +1,21 @@
+{
+    "name": "My PWA",
+    "short_name": "PWA",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#317EFB",
+    "orientation": "portrait",
+    "icons": [
+      {
+        "src": "/static/icon512_maskable.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/icon512_maskable.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome PWA</title>
+    <link rel="manifest" href="manifest.json" />
+</head>
+
+<body>
+    <button id="install_pwa">Cài đặt App</button>
+    <script type="module" defer>
+        import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.2.0/workbox-window.prod.mjs';
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            deferredPrompt = e;
+        });
+        document.querySelector('#install_pwa').addEventListener('click', (ev) => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(choiceResult => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted PWA ');
+                    } else {
+                        console.log('User dismissed PWA');
+                    }
+                    deferredPrompt = null;
+                })
+            }
+        });
+
+        if ('serviceWorker' in navigator) {
+            console.log('Trình duyệt có hỗ trợ Service Worker');
+            const wb = new Workbox('/my-pwa-sw.js');
+            wb.register();
+            // window.addEventListener('load', async (ev) => {
+            //     try {
+            //         const registration = await navigator.serviceWorker.register('/my-pwa-sw.js');
+            //         console.log('Service Worker đã được đăng ký với phạm vi URL: ', registration.scope);
+            //         registration.addEventListener('updatefound', () => {
+            //             console.log('Service Worker có phiên bản mới');
+            //         })
+            //     } catch (err) {
+            //         console.log('Service Worker đăng ký thất bại', err);
+            //     }
+            // });
+        } else {
+            console.log('Trình duyệt không hỗ trợ Service Worker hoặc đang ở chế độ riêng tư');
+        }
+    </script>
+</body>
+
+</html>
